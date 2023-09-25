@@ -184,3 +184,87 @@ console.log(contadorDeLetras2("Dario","Jochemi","e"));
 
 // Escribe una función llamada toCase que reciba como parámetro de entrada una cadena de texto y devuelva esa misma cadena de texto en minúsculas, 
 //un guión medio y de nuevo esa misma cadena de texto en mayúsculas.
+
+function toCase(cadena){
+   return cadena.toLowerCase()+"-"+cadena.toUpperCase();
+}
+
+console.log(toCase("Dario"));
+
+// Escribe una función llamada shortcut que tome dos cadenas de texto y devuelva la inicial de cada una de las dos cadenas.
+
+function shortcut(cadena1,cadena2){
+    return cadena1.charAt(0)+cadena2.charAt(0);
+}
+
+console.log(shortcut("Dario", "Mariana"));
+
+//Escribe una función llamada firstChar, que devuelva la primera letra que no sea un espacio cuando una cadena de texto es pasada.
+//Para ello, podemos eliminar los espacios en blanco que pudiera haber al principio y al final de la cadena de texto utilizando la el método trim(). 
+//Si no estás muy seguro de como funciona este método, consúltalo en internet, que no es tan difícil!.
+
+function firstChar(cadena){
+    return cadena.trim().charAt(0);
+}
+
+console.log(firstChar("  miau "));
+
+// Escribe una función llamada indexOfIgnoreCase que reciba dos cadenas de texto y 
+//devuelva la posición de la primera ocurrencia de la segunda cadena de texto en la primera. La función no debería tener en cuenta mayúsculas y minúsculas.
+
+function indexOfIgnoreCase(cadena1, cadena2) {
+    return cadena1.toLowerCase().indexOf(cadena2.toLowerCase());
+}
+
+console.log(indexOfIgnoreCase("currito", "to"));
+
+//Escribe una función llamada firstWord que reciba como parámetro de entrada una cadena de texto y 
+//devuelva la primera palabra de esa cadena. La primera palaba de la cadena serán todos los caracteres que hay hasta el primer espacio.
+
+function firstWord(cadena){
+    return cadena.trim().substring(0,cadena.indexOf(" "));
+}
+
+console.log(firstWord("Hola tio"));
+
+/*Parte 2: Template Literals
+
+Crea una función llamada saludoPersonalizado que tome un nombre y una edad como argumentos y utilice un template 
+literal para devolver un saludo personalizado que incluya el nombre y la edad.
+
+Utiliza un template literal para crear una cadena que muestre una lista de compras con varios elementos. Luego, muestra esa cadena en la consola.
+
+Escribe una función llamada informacionProducto que tome un objeto con información de un producto (nombre, precio, categoría, etc.) y utilice un 
+template literal para generar una descripción del producto. Luego, muestra esa descripción en la consola.
+*/
+
+function saludoPersonalizado(nombre,edad){
+    return `Hola ${nombre} con ${edad} años`
+}
+
+console.log(saludoPersonalizado("Dario",19));
+
+function informacionProducto(nombre,precio,categoria){
+    return `El producto con nombre ${nombre}, un precio de ${precio} perteneciente a la categoria de ${categoria}`
+}
+
+console.log(informacionProducto("Manzana",2,"Fruta"))
+
+/*Parte 3: DNI y Letra
+
+Implementa una función llamada validarDNI que tome un número de DNI (con o sin letra) como argumento y determine si es un DNI válido. 
+La función debe calcular la letra correspondiente al número y compararla con la letra proporcionada (si se proporciona). Devuelve true si es válido y false si no lo es.
+
+Prueba la función validarDNI con varios números de DNI, incluyendo algunos con letra y otros sin ella.*/ 
+
+function validarDNI(dni){
+    let resultado = false;
+    const LETRADNI= "TRWAGMYFPDXBNJZSQVHLCKE";
+    let posicion = dni.substring(0,8)%23;
+    if(dni.length == 9 && dni.charAt(dni.length-1) == LETRADNI.charAt(posicion)){
+        resultado = true;
+    }
+    return resultado;
+}
+
+console.log(validarDNI("30266693G"));
